@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family";
-const senderText = "From Your Vamsi Krishna"; // Your name
+const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family From Your Vamsi Krishna";
+
 
 const App = () => {
   const [fallingWords, setFallingWords] = useState([]);
@@ -70,8 +70,7 @@ const App = () => {
         />
       ))}
 
-      {/* Your Name (Appears Last) */}
-      {showFinalWish && <h1 className="static-wish">{senderText}</h1>}
+      
     </div>
   );
 };
