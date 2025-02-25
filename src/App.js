@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family \n From Your Vamsi Krishna";
-
+const wishText = [
+  "Wishing you Happy Maha Shivaratri to You & Your Family",
+  "From Your Vamsi Krishna",
+];
 
 const App = () => {
   const [fallingWords, setFallingWords] = useState([]);
@@ -10,7 +12,7 @@ const App = () => {
   const [showFinalWish, setShowFinalWish] = useState(false);
 
   const startAnimation = () => {
-    const wordsArray = wishText.split(" ");
+    const wordsArray = wishText[0].split(" ");
     setFallingWords(wordsArray.map((word, index) => ({
       id: index,
       text: word,
@@ -55,13 +57,12 @@ const App = () => {
 
       {/* Final Wish (Appears after animation) */}
       {showFinalWish && (
-      <div className="word-container">
-        Wishing you Happy Maha Shivaratri to You & Your Family
-        <br />
-        From Your Vamsi Krishna
-       </div>
-                          )}
-
+        <div className="word-container">
+          {wishText.map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </div>
+      )}
 
       {/* Falling Flowers Animation */}
       {flowers.map((flower) => (
@@ -76,8 +77,6 @@ const App = () => {
           alt="Flower"
         />
       ))}
-
-      
     </div>
   );
 };
