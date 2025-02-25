@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family From Your Vamsi Krishna";
+const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family \n From Your Vamsi Krishna";
 
 
 const App = () => {
