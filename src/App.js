@@ -56,8 +56,7 @@ const App = () => {
       {/* Final Wish (Appears after animation) */}
       {showFinalWish && <div className="word-container">{wishText}</div>}
 
-      {/* Your Name (At the bottom) */}
-      <h1 className="static-wish">{senderText}</h1>
+      
 
       {/* Falling Flowers Animation */}
       {flowers.map((flower) => (
@@ -72,6 +71,8 @@ const App = () => {
           alt="Flower"
         />
       ))}
+      {/* Your Name (At the bottom) */}
+      <h1 className="static-wish">{senderText}</h1>
     </div>
   );
 };
