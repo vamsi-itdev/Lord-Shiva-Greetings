@@ -54,7 +54,14 @@ const App = () => {
       ))}
 
       {/* Final Wish (Appears after animation) */}
-      {showFinalWish && <div className="word-container">{wishText}</div>}
+      {showFinalWish && (
+      <div className="word-container">
+        Wishing you Happy Maha Shivaratri to You & Your Family
+        <br />
+        From Your Vamsi Krishna
+       </div>
+                          )}
+
 
       {/* Falling Flowers Animation */}
       {flowers.map((flower) => (
