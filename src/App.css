@@ -1,14 +1,13 @@
 /* Main container */
 .App {
   text-align: center;
-  background-color: #f0f0f0; /* Light mode background */
+  background-color: #f0f0f0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
@@ -34,27 +33,15 @@
   height: auto;
 }
 
-/* Title */
-.title {
-  font-size: 2rem;
-  transition: color 0.3s ease-in-out;
-  word-wrap: break-word;
-  text-align: center;
-  color: black;
+/* Static Name (Always Visible) */
+.static-wish {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff9800;
+  margin-top: 10px;
 }
 
-/* Dark mode text */
-@media (prefers-color-scheme: dark) {
-  .title {
-    color: white;
-  }
-}
-
-/* Buttons */
-.button-container {
-  margin-top: 20px;
-}
-
+/* Button */
 button {
   background-color: #ff4081;
   color: white;
@@ -63,13 +50,45 @@ button {
   font-size: 1.2rem;
   border-radius: 8px;
   cursor: pointer;
-  margin: 10px;
+  margin-top: 20px;
   transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: #e91e63;
   transform: scale(1.05);
+}
+
+/* Falling Words */
+.falling-word {
+  position: absolute;
+  top: -50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e91e63;
+  animation: fallWords linear forwards;
+  opacity: 0.9;
+}
+
+/* Falling Words Animation */
+@keyframes fallWords {
+  0% {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(80vh);
+    opacity: 0.8;
+  }
+}
+
+/* Final Wish at Lord Shiva's feet */
+.word-container {
+  position: absolute;
+  bottom: 50px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff9800;
 }
 
 /* Falling Flowers */
@@ -92,41 +111,18 @@ button:hover {
   }
 }
 
-/* Falling Wishes */
-.falling-word {
-  position: absolute;
-  top: -50px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #e91e63;
-  animation: fallWords linear infinite;
-  opacity: 0.9;
-}
-
-/* Falling Words Animation */
-@keyframes fallWords {
-  0% {
-    transform: translateY(-50px);
-    opacity: 1;
+/* Mobile Responsive */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
   }
-  100% {
-    transform: translateY(80vh);
-    opacity: 0.8;
+
+  .shiva-image {
+    width: 90%;
   }
-}
 
-/* Full Wish Sentence Appears Here */
-.full-wish {
-  margin-top: 20px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ff9800;
-}
-
-/* Sender Name (Always Visible) */
-.sender-name {
-  margin-top: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #00bcd4;
+  button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }

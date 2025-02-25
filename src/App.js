@@ -1,111 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import shivaImage from "./shiva.png"; // Shiva image from src
 
-function App() {
+const wishText = "Wishing you Happy Maha Shivaratri to You & Your Family";
+const senderText = "From Your Vamsi Krishna"; // Your name
+
+const App = () => {
+  const [fallingWords, setFallingWords] = useState([]);
   const [flowers, setFlowers] = useState([]);
-  const [words, setWords] = useState([]);
-  const [showFullWish, setShowFullWish] = useState(false);
-  const [selectedWish, setSelectedWish] = useState("");
+  const [showFinalWish, setShowFinalWish] = useState(false);
 
-  const wishesList = [
-    "Wishing you a blissful Maha Shivaratri!",
-    "May Lord Shiva bless you with happiness!",
-    "Har Har Mahadev! Shambo Shankara. The lord shiva May your life be peaceful!",
-    "Celebrate Shivaratri with love and devotion!",
-    "Om Namah Shivaya! Stay blessed!",
-  ];
-
-  const senderText = "From Your Vamsi Krishna"; // Your name
-
-  // Function to create falling flowers
-  const dropFlowers = () => {
-    let newFlowers = [];
-    for (let i = 0; i < 15; i++) {
-      newFlowers.push({
-        id: i,
-        left: Math.random() * window.innerWidth, // Random horizontal position
-        animationDuration: 3 + Math.random() * 2, // Random fall speed
-      });
-    }
-    setFlowers(newFlowers);
-
-    setTimeout(() => {
-      setFlowers([]);
-    }, 5000);
-  };
-
-  // Function to drop words and form full sentence
-  const startWishes = () => {
-    setShowFullWish(false);
-    
-    // Pick a random wish from the list
-    const randomWish = wishesList[Math.floor(Math.random() * wishesList.length)];
-    setSelectedWish(randomWish);
-
-    let newWords = randomWish.split(" ").map((word, index) => ({
+  const startAnimation = () => {
+    const wordsArray = wishText.split(" ");
+    setFallingWords(wordsArray.map((word, index) => ({
       id: index,
       text: word,
-      left: Math.random() * window.innerWidth, // Random horizontal position
-      animationDuration: 3 + Math.random() * 2, // Random speed
-    }));
+      left: Math.random() * 80 + 10,
+      animationDuration: Math.random() * 2 + 3,
+    })));
 
-    setWords(newWords);
-
-    // After animation, show full wish text
     setTimeout(() => {
-      setShowFullWish(true);
-    }, 3000);
+      setShowFinalWish(true);
+      setFallingWords([]);
+    }, 4000); // After 4 seconds, show final wish
+
+    // Falling Flowers Animation
+    const flowerCount = 10;
+    setFlowers(Array.from({ length: flowerCount }, (_, index) => ({
+      id: index,
+      left: Math.random() * 100,
+      animationDuration: Math.random() * 3 + 2,
+    })));
   };
 
   return (
     <div className="App">
-      <h1 className="title">🌸 Om Namah Shivaya 🌸</h1>
       <div className="shiva-container">
-        <img src={shivaImage} alt="Lord Shiva" className="shiva-image" />
+        <img src={`${process.env.PUBLIC_URL}/shiva.png`} className="shiva-image" alt="Lord Shiva" />
       </div>
 
-      {/* Buttons */}
-      <div className="button-container">
-        <button onClick={dropFlowers}>🌼 Pour Flowers 🌼</button>
-        <button onClick={startWishes}>💖 Show Wishes 💖</button>
-      </div>
+      <h1 className="static-wish">{senderText}</h1>
 
-      {/* Falling Flowers */}
-      {flowers.map((flower) => (
-        <img
-          key={flower.id}
-          src="/flower.png" // Flower image from public folder
-          className="flower"
-          style={{
-            left: `${flower.left}px`,
-            animationDuration: `${flower.animationDuration}s`,
-          }}
-          alt="Flower"
-        />
-      ))}
+      <button onClick={startAnimation}>Tap for Blessings</button>
 
-      {/* Falling Wish Words */}
-      {words.map((word) => (
+      {fallingWords.map((word) => (
         <span
           key={word.id}
           className="falling-word"
-          style={{
-            left: `${word.left}px`,
-            animationDuration: `${word.animationDuration}s`,
-          }}
+          style={{ left: `${word.left}%`, animationDuration: `${word.animationDuration}s` }}
         >
           {word.text}
         </span>
       ))}
 
-      {/* Full Wish Sentence Appears Here After Falling Animation */}
-      {showFullWish && <div className="full-wish">{selectedWish}</div>}
+      {showFinalWish && <div className="word-container">{wishText}</div>}
 
-      {/* Your Name (Always Visible) */}
-      <div className="sender-name">{senderText}</div>
+      {/* Falling Flowers */}
+      {flowers.map((flower) => (
+        <img
+          key={flower.id}
+          src={`${process.env.PUBLIC_URL}/flower.png`} // Updated path for GitHub Pages
+          className="flower"
+          style={{
+            left: `${flower.left}%`,
+            animationDuration: `${flower.animationDuration}s`,
+          }}
+          alt="Flower"
+        />
+      ))}
     </div>
   );
-}
+};
 
 export default App;
