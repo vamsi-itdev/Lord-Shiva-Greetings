@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Lord-Shiva-Greetings/static/css/main.a3b2cedc.css",
+    "main.js": "/Lord-Shiva-Greetings/static/js/main.8d07e9d2.js",
+    "static/js/453.4ae339a0.chunk.js": "/Lord-Shiva-Greetings/static/js/453.4ae339a0.chunk.js",
+    "static/media/shiva.png": "/Lord-Shiva-Greetings/static/media/shiva.04d1cef7144f976a9fc7.png",
+    "index.html": "/Lord-Shiva-Greetings/index.html",
+    "main.a3b2cedc.css.map": "/Lord-Shiva-Greetings/static/css/main.a3b2cedc.css.map",
+    "main.8d07e9d2.js.map": "/Lord-Shiva-Greetings/static/js/main.8d07e9d2.js.map",
+    "453.4ae339a0.chunk.js.map": "/Lord-Shiva-Greetings/static/js/453.4ae339a0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3b2cedc.css",
+    "static/js/main.8d07e9d2.js"
+  ]
+}
