@@ -34,14 +34,15 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* Lord Shiva Image (Always on top) */}
       <div className="shiva-container">
         <img src={`${process.env.PUBLIC_URL}/shiva.png`} className="shiva-image" alt="Lord Shiva" />
       </div>
 
-      
+      {/* Tap for Blessings Button */}
+      <button onClick={startAnimation}>Tap for Blessings</button>
 
-      <button onClick={startAnimation}>Blessings</button>
-
+      {/* Falling Words Animation */}
       {fallingWords.map((word) => (
         <span
           key={word.id}
@@ -52,13 +53,17 @@ const App = () => {
         </span>
       ))}
 
+      {/* Final Wish (Appears after animation) */}
       {showFinalWish && <div className="word-container">{wishText}</div>}
+
+      {/* Your Name (At the bottom) */}
       <h1 className="static-wish">{senderText}</h1>
-      {/* Falling Flowers */}
+
+      {/* Falling Flowers Animation */}
       {flowers.map((flower) => (
         <img
           key={flower.id}
-          src={`${process.env.PUBLIC_URL}/flower.png`} // Updated path for GitHub Pages
+          src={`${process.env.PUBLIC_URL}/flower.png`} // GitHub Pages-friendly path
           className="flower"
           style={{
             left: `${flower.left}%`,
