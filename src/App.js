@@ -38,9 +38,9 @@ const App = () => {
         <img src={`${process.env.PUBLIC_URL}/shiva.png`} className="shiva-image" alt="Lord Shiva" />
       </div>
 
-      <h1 className="static-wish">{senderText}</h1>
+      
 
-      <button onClick={startAnimation}>Tap for Blessings</button>
+      <button onClick={startAnimation}>Blessings</button>
 
       {fallingWords.map((word) => (
         <span
@@ -53,7 +53,7 @@ const App = () => {
       ))}
 
       {showFinalWish && <div className="word-container">{wishText}</div>}
-
+      <h1 className="static-wish">{senderText}</h1>
       {/* Falling Flowers */}
       {flowers.map((flower) => (
         <img
